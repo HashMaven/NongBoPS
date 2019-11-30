@@ -9,6 +9,7 @@
 	<typeAliases>
 		<!-- 配置数据类型的别名 -->
 		<typeAlias type="com.spring.pojo.User"  alias="user"/>
+		<typeAlias type="com.spring.pojo.SentMessage"  alias="sentMessage"/>
 	</typeAliases>
 	
 </configuration>
