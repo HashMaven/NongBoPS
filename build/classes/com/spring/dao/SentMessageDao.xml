@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 映射器名字空间，即BlogMapper的完整路径名 -->
+<mapper namespace="com.spring.dao.SentMessageDao">
+
+	<insert id="addUser" parameterType="user">
+		insert into
+		tb_user(name,password) values(#{name},#{password});
+	</insert>
+
+	<select id="findAllSentMessageByDate" parameterType="date" resultType="sentMessage">
+		SELECT
+		S.ShopName,
+		SM.SentNum,
+		SM.`Return`,
+		SM.SentNo,
+		SM.SentDate,
+		SM.`User`,
+		G.GoodsName
+		FROM
+		tb_SentMessage SM
+		LEFT JOIN tb_Shop S ON S.ShopNo = SM.ShopNo
+		LEFT JOIN tb_Goods G ON SM.GoodsKindNo = G.GoodsKindNo
+		where SM.SentDate = CURRENT_DATE
+		and SM.DelFlg = '0'
+	</select>
+
+</mapper>
